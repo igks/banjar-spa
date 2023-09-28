@@ -79,3 +79,5 @@ export const palettes = {
   },
   ...colors
 }
+
+export const spacing = (value: number) => `${8 * value}px`;

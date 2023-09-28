@@ -1,6 +1,6 @@
 import { Box } from "@mui/material";
 import { PropsWithChildren } from "react";
-import { palettes } from "../../utils/theme";
+import { palettes } from "../../constants/theme";
 
 const Body = ({ children }: PropsWithChildren) => {
   return (
