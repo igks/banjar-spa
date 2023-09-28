@@ -1,10 +1,16 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Splash from "./pages/splash";
+import Home from "./pages/home";
 
 const Router = () => {
   const routes = createBrowserRouter([
     {
       path: "/",
-      element: <div>Hello world!</div>,
+      element: <Splash />,
+    },
+    {
+      path: "/home",
+      element: <Home />,
     },
   ]);
 
