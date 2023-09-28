@@ -1,11 +1,50 @@
-import { AppBar, Box, IconButton, Toolbar, Typography } from "@mui/material";
-import MenuIcon from "@mui/icons-material/Menu";
-import LoginIcon from "@mui/icons-material/Login";
+import {
+  AppBar,
+  Box,
+  Grid,
+  IconButton,
+  Toolbar,
+  Typography,
+} from "@mui/material";
+
+import {
+  Menu,
+  Login,
+  Close,
+  Group,
+  PriceCheck,
+  ReceiptLong,
+  Home,
+} from "@mui/icons-material";
 import { useState } from "react";
 import { StyledDrawer } from "./styled.component";
+import MenuButton, { MenuButtonProps } from "./MenuButton";
 
 const Header = () => {
   const [openDrawer, setOpenDrawer] = useState(false);
+
+  const menu: MenuButtonProps[] = [
+    {
+      icon: <Home sx={{ fontSize: 32 }} />,
+      caption: "Home",
+      onClick: () => {},
+    },
+    {
+      icon: <Group sx={{ fontSize: 32 }} />,
+      caption: "Anggota",
+      onClick: () => {},
+    },
+    {
+      icon: <PriceCheck sx={{ fontSize: 32 }} />,
+      caption: "Pembayaran",
+      onClick: () => {},
+    },
+    {
+      icon: <ReceiptLong sx={{ fontSize: 32 }} />,
+      caption: "Pembayaran",
+      onClick: () => {},
+    },
+  ];
 
   return (
     <>
@@ -19,7 +58,7 @@ const Header = () => {
               aria-label="menu"
               onClick={() => setOpenDrawer(true)}
             >
-              <MenuIcon />
+              {openDrawer ? <Close /> : <Menu />}
             </IconButton>
 
             <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
@@ -33,7 +72,7 @@ const Header = () => {
               aria-label="menu"
               onClick={() => setOpenDrawer(true)}
             >
-              <LoginIcon />
+              <Login />
             </IconButton>
           </Toolbar>
         </AppBar>
@@ -45,13 +84,20 @@ const Header = () => {
         >
           <Box
             sx={{
-              minHeight: "40vh",
+              minHeight: "30vh",
             }}
           >
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            Perspiciatis cumque voluptates amet quae. Aliquam, nisi recusandae
-            enim nobis unde aperiam magni dolorum reprehenderit omnis, amet
-            explicabo culpa, laudantium id natus?
+            <Box>
+              <Grid container rowSpacing={2}>
+                {menu.map((menu) => (
+                  <MenuButton
+                    icon={menu.icon}
+                    caption={menu.caption}
+                    onClick={menu.onClick}
+                  />
+                ))}
+              </Grid>
+            </Box>
           </Box>
         </StyledDrawer>
       </Box>
