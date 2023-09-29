@@ -2,6 +2,8 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import teal from "@mui/material/colors/teal";
 import Layout from "./pages/main/Layout";
 import { BrowserRouter } from "react-router-dom";
+import { store } from "./states/store";
+import { Provider } from "react-redux";
 
 const App = () => {
   const theme = createTheme({
@@ -18,9 +20,11 @@ const App = () => {
 
   return (
     <BrowserRouter>
-      <ThemeProvider theme={theme}>
-        <Layout />
-      </ThemeProvider>
+      <Provider store={store}>
+        <ThemeProvider theme={theme}>
+          <Layout />
+        </ThemeProvider>
+      </Provider>
     </BrowserRouter>
   );
 };

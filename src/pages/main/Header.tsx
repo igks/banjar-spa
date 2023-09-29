@@ -15,22 +15,35 @@ import {
   PriceCheck,
   ReceiptLong,
   Home,
+  Logout,
 } from "@mui/icons-material";
 import { useState } from "react";
 import { StyledDrawer } from "./styled.component";
 import MenuButton, { MenuButtonProps } from "./MenuButton";
 import { useNavigate } from "react-router-dom";
 import { PATH } from "../../constants/path";
+import { useDispatch, useSelector } from "react-redux";
+import { AppState } from "../../states/store";
+import { logout } from "../../states/slices/authentication";
 
 const Header = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const { isAuthenticated } = useSelector((state: AppState) => state.auth);
   const [openDrawer, setOpenDrawer] = useState(false);
+
+  const hideDrawer = () => {
+    setOpenDrawer(false);
+  };
 
   const menu: MenuButtonProps[] = [
     {
       icon: <Home sx={{ fontSize: 32 }} />,
       caption: "Home",
-      onClick: () => {},
+      onClick: () => {
+        hideDrawer();
+        navigate(PATH.home);
+      },
     },
     {
       icon: <Group sx={{ fontSize: 32 }} />,
@@ -51,6 +64,10 @@ const Header = () => {
 
   const loginClickHandler = () => {
     navigate(PATH.login);
+  };
+
+  const logoutClickHandler = () => {
+    dispatch(logout());
   };
 
   return (
@@ -77,18 +94,16 @@ const Header = () => {
               edge="start"
               color="inherit"
               aria-label="menu"
-              onClick={loginClickHandler}
+              onClick={
+                !isAuthenticated ? loginClickHandler : logoutClickHandler
+              }
             >
-              <Login />
+              {!isAuthenticated ? <Login /> : <Logout />}
             </IconButton>
           </Toolbar>
         </AppBar>
 
-        <StyledDrawer
-          anchor="bottom"
-          open={openDrawer}
-          onClose={() => setOpenDrawer(false)}
-        >
+        <StyledDrawer anchor="bottom" open={openDrawer} onClose={hideDrawer}>
           <Box
             sx={{
               minHeight: "30vh",
