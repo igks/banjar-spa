@@ -1,4 +1,5 @@
 export const PATH = {
   splash:"/",
-  home: "/home"
+  home: "/home",
+  login:"/login"
 }

@@ -1,7 +1,8 @@
 import * as colors from '@mui/material/colors';
 
+export const spacing = (value: number) => `${8 * value}px`;
+
 export const palettes = {
-  "mode": "light",
   "primary": {
       "50": "#e0f2f1",
       "100": "#b2dfdb",
@@ -52,8 +53,6 @@ export const palettes = {
       "dark": "#1b5e20",
       "contrastText": "#fff"
   },
-  "contrastThreshold": 3,
-  "tonalOffset": 0.2,
   "text": {
       "primary": "rgba(0, 0, 0, 0.87)",
       "secondary": "rgba(0, 0, 0, 0.6)",
@@ -78,6 +77,4 @@ export const palettes = {
       "activatedOpacity": 0.12
   },
   ...colors
-}
-
-export const spacing = (value: number) => `${8 * value}px`;
+} 

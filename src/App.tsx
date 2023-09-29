@@ -1,6 +1,7 @@
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import teal from "@mui/material/colors/teal";
 import Layout from "./pages/main/Layout";
+import { BrowserRouter } from "react-router-dom";
 
 const App = () => {
   const theme = createTheme({
@@ -16,9 +17,11 @@ const App = () => {
   });
 
   return (
-    <ThemeProvider theme={theme}>
-      <Layout />
-    </ThemeProvider>
+    <BrowserRouter>
+      <ThemeProvider theme={theme}>
+        <Layout />
+      </ThemeProvider>
+    </BrowserRouter>
   );
 };
 

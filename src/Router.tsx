@@ -1,20 +1,32 @@
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import Splash from "./pages/splash";
 import Home from "./pages/home";
+import Login from "./pages/login";
+import { PATH } from "./constants/path";
 
 const Router = () => {
-  const routes = createBrowserRouter([
+  const routes = [
     {
-      path: "/",
+      path: PATH.splash,
       element: <Splash />,
     },
     {
-      path: "/home",
+      path: PATH.home,
       element: <Home />,
     },
-  ]);
+    {
+      path: PATH.login,
+      element: <Login />,
+    },
+  ];
 
-  return <RouterProvider router={routes} />;
+  return (
+    <Routes>
+      {routes.map((route) => (
+        <Route key={route.path} {...route} />
+      ))}
+    </Routes>
+  );
 };
 
 export default Router;

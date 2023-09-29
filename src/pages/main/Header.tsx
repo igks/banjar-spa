@@ -19,8 +19,11 @@ import {
 import { useState } from "react";
 import { StyledDrawer } from "./styled.component";
 import MenuButton, { MenuButtonProps } from "./MenuButton";
+import { useNavigate } from "react-router-dom";
+import { PATH } from "../../constants/path";
 
 const Header = () => {
+  const navigate = useNavigate();
   const [openDrawer, setOpenDrawer] = useState(false);
 
   const menu: MenuButtonProps[] = [
@@ -41,10 +44,14 @@ const Header = () => {
     },
     {
       icon: <ReceiptLong sx={{ fontSize: 32 }} />,
-      caption: "Pembayaran",
+      caption: "Transaksi",
       onClick: () => {},
     },
   ];
+
+  const loginClickHandler = () => {
+    navigate(PATH.login);
+  };
 
   return (
     <>
@@ -70,7 +77,7 @@ const Header = () => {
               edge="start"
               color="inherit"
               aria-label="menu"
-              onClick={() => setOpenDrawer(true)}
+              onClick={loginClickHandler}
             >
               <Login />
             </IconButton>
@@ -91,6 +98,7 @@ const Header = () => {
               <Grid container rowSpacing={2}>
                 {menu.map((menu) => (
                   <MenuButton
+                    key={menu.caption}
                     icon={menu.icon}
                     caption={menu.caption}
                     onClick={menu.onClick}
