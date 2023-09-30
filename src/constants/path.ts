@@ -1,5 +1,8 @@
 export const PATH = {
   splash:"/",
   home: "/home",
-  login:"/login"
+  login:"/login",
+  anggota:"/anggota",
+  pembayaran:"/pembayara",
+  transaksi:"/transaksi"
 }

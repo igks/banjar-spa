@@ -30,6 +30,7 @@ const Header = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { isAuthenticated } = useSelector((state: AppState) => state.auth);
+  const { activePage } = useSelector((state: AppState) => state.page);
   const [openDrawer, setOpenDrawer] = useState(false);
 
   const hideDrawer = () => {
@@ -48,7 +49,10 @@ const Header = () => {
     {
       icon: <Group sx={{ fontSize: 32 }} />,
       caption: "Anggota",
-      onClick: () => {},
+      onClick: () => {
+        hideDrawer();
+        navigate(PATH.anggota);
+      },
     },
     {
       icon: <PriceCheck sx={{ fontSize: 32 }} />,
@@ -81,13 +85,14 @@ const Header = () => {
               color="inherit"
               aria-label="menu"
               onClick={() => setOpenDrawer(true)}
+              sx={{ marginRight: 1 }}
             >
               {openDrawer ? <Close /> : <Menu />}
             </IconButton>
-
-            <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-              Banjar Batu Aji Barat
-            </Typography>
+            <Box component="div" sx={{ flexGrow: 1 }}>
+              <Typography variant="subtitle1">Banjar Batu Aji Barat</Typography>
+              <Typography variant="subtitle2">{activePage}</Typography>
+            </Box>
 
             <IconButton
               size="large"

@@ -3,6 +3,7 @@ import Splash from "./pages/splash";
 import Home from "./pages/home";
 import Login from "./pages/login";
 import { PATH } from "./constants/path";
+import Anggota from "./pages/anggota";
 
 const Router = () => {
   const routes = [
@@ -17,6 +18,10 @@ const Router = () => {
     {
       path: PATH.login,
       element: <Login />,
+    },
+    {
+      path: PATH.anggota,
+      element: <Anggota />,
     },
   ];
 
