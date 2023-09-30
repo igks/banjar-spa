@@ -11,7 +11,7 @@ const Layout = () => {
       sx={{
         display: "flex",
         flexDirection: "column",
-        margin: 0,
+        margin: "auto",
         padding: 0,
         height: "100vh",
         width: "100wh",
